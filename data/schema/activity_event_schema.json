@@ -1,0 +1,15 @@
+{
+  "leadId": "LEAD-20240110-001",
+  "cksid": "CKS-001",
+  "pacode": "00123",
+  "activity": {
+    "activityName": "Appointment Scheduled",
+    "comments": "Sample comment",
+    "activityDate": "2024-01-10T10:00:00"
+  },
+  "opportunities": {"opportunityId": 5001},
+  "appointments": {"appointmentDateTime": "2024-01-15T09:00:00"},
+  "salesrep": [
+    {"salesreptype": "Primary", "salesrepCdsId": "REP-001", "salesrepName": "Michael Johnson"}
+  ]
+}

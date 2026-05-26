@@ -1,0 +1,96 @@
+# ============================================================
+# Databricks Workflow Definition
+# Pipeline : wf_activity_ingest
+# Purpose  : Orchestrates the activity event streaming ingest
+#            notebook on a scheduled or on-demand basis.
+# Author   : Sanjeev Kumar Pandey
+# ============================================================
+
+resources:
+  jobs:
+    wf_activity_ingest:
+      name: wf_activity_ingest
+
+      tasks:
+        - task_key: activity_ingest
+          notebook_task:
+            notebook_path: /Workspace/projects/activity_ingest/activity_ingest
+            base_parameters:
+              appName:                  ""
+              checkpoint_directory:     ""
+              eventhub_capture_path:    ""
+              raw_output_directory:     ""
+              schema_path:              ""
+              staging_database:         ""
+              env:                      ""
+              table_activities_raw_ext: ""
+            source: WORKSPACE
+          environment_key: Default
+
+      tags:
+        application: activity_ingest
+
+      parameters:
+        - name: appName
+          default: activity_ingest
+
+        - name: checkpoint_directory
+          default: /Volumes/uc_dev/staging/activities/ingest_checkpoint/
+
+        - name: eventhub_capture_path
+          default: /Volumes/uc_dev/default/eventhub/dev-events/activities
+
+        - name: raw_output_directory
+          default: abfss://landing@yourstorageaccount.dfs.core.windows.net/staging/activities_raw_ext
+
+        - name: staging_database
+          default: staging_db
+
+        - name: dataset
+          default: ACTIVITIES
+
+        - name: env
+          default: dev
+
+        - name: ops_database
+          default: ops
+
+        - name: ops_metadata_table
+          default: ops_application_metadata
+
+        - name: pipeline_or_workflow_name
+          default: wf_activity_ingest
+
+        - name: schema_path
+          default: /Volumes/uc_dev/staging/activities/schema
+
+        - name: status_database
+          default: ops
+
+        - name: status_tbl
+          default: tbl_run_status
+
+        - name: storage_name
+          default: yourstorageaccount
+
+        - name: table_activities
+          default: activities
+
+        - name: table_activities_raw_ext
+          default: activities_raw_ext
+
+      run_as:
+        service_principal_name: <your-service-principal-id>
+
+      environments:
+        - environment_key: Default
+          spec:
+            client: "2"
+            dependencies:
+              - paramiko
+              - sendgrid
+              - azure-eventhub
+              - azure-storage-file-share
+              - /Volumes/uc_dev/default/jars/shared_functions-0.8-py3-none-any.whl
+
+      performance_target: PERFORMANCE_OPTIMIZED

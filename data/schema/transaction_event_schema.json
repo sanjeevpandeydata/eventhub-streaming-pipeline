@@ -1,0 +1,47 @@
+{
+  "transactionId": 10001,
+  "leaddate": "2024-01-10T09:15:00",
+  "pacode": "00123",
+  "cksid": "CKS-001",
+  "sourceSystem": "eventSource",
+  "trackingId": "TRK-20240110-001",
+  "customerInfo": {
+    "customers": {
+      "type": "Primary",
+      "firstname": "James",
+      "lastname": "Carter",
+      "middlename": "A",
+      "title": "Mr",
+      "emails": [
+        {"address": "james.carter@email.com", "emailType": "Personal", "primary": true, "optin": true},
+        {"address": null, "emailType": null, "primary": null, "optin": null},
+        {"address": null, "emailType": null, "primary": null, "optin": null}
+      ],
+      "phones": [
+        {"number": "5551234567", "phoneType": "Mobile", "primary": true, "phoneOptIn": true, "textOptIn": true},
+        {"number": null, "phoneType": null, "primary": null, "phoneOptIn": null, "textOptIn": null},
+        {"number": null, "phoneType": null, "primary": null, "phoneOptIn": null, "textOptIn": null}
+      ],
+      "address": {
+        "addressline1": "101 Maple Street",
+        "addressline2": null,
+        "city": "Austin",
+        "state": "TX",
+        "zip": "78701",
+        "country": "USA"
+      }
+    }
+  },
+  "opportunities": {"opportunityId": 5001, "appointmentShown": true},
+  "vehiclesSought": {
+    "inventoryType": "New", "year": 2024, "make": "Toyota",
+    "model": "Camry", "trim": "XSE",
+    "vin": "1HGBH41JXMN109186", "stockId": "STK-10001"
+  },
+  "tradeIn": {"tradeInVin": "2T1BURHE0JC034321", "tradeInAmount": 12000.00, "payOffAmount": 8500.00},
+  "salesrep": [
+    {"salesrepType": "Primary", "salesrepCdsId": "REP-001", "salesrepName": "Michael Johnson"},
+    {"salesrepType": null, "salesrepCdsId": null, "salesrepName": null},
+    {"salesrepType": null, "salesrepCdsId": null, "salesrepName": null}
+  ]
+}
